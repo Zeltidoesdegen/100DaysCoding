@@ -69,3 +69,4 @@ while choice1 != ("LEFT", "RIGHT"):
 # Refactor the breaks
 # Addition of counters - possible if too many mistakes, make game over
 # Refactor exit in future
+# Make it a bit more lengthy.
