@@ -22,43 +22,50 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 ''')
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
-
 choice1 = ""
+choice2 = ""
+choice3 = ""
 
 
-while choice1 not in ("LEFT", "RIGHT"):
-    choice1 = str.upper(input("Where do you want to go? Left or Right? "))
+while choice1 != ("LEFT", "RIGHT"):
+    choice1 = input('You\'re at a cross road. Where do you want to go? Type "left" or "right"').upper()
     if choice1 == "LEFT":
-        print("You've come to a lake. There is an island in the middle of the lake.")
+        while choice2 != ("SWIM", "WAIT"):
+            choice2 = input('You\'ve come to a lake. '
+                        'There is an island in the middle of the lake. '
+                        'Type "wait" to wait for a boat. '
+                        'Type "swim" to swim across.\n').upper()
+            if choice2 == "WAIT":
+                while choice3 != ("Red", "Blue", "Yellow"):
+                    choice3 = input("You arrive at the island unharmed. "
+                                    "There is house with 3 doors. One red, "
+                                    "one yellow and one blue. "
+                                    "Which colour do you choose?\n").upper()
+                    if choice3 == "YELLOW":
+                        print("You Win! You found the treasure")
+                        exit()
+                    elif choice3 == "BLUE":
+                        print("Eaten by bests. Game Over!")
+                        exit()
+                    elif choice3 == "RED":
+                        print("It's a room full of fire. Game Over.")
+                        exit()
+                    else:
+                        print("You've input a wrong answer, please choose again.")
+
+            elif choice2 == "SWIM":
+                print("You get attacked by an angry trout. Game Over.")
+                exit()
+            else:
+                print("You've input a wrong answer, please choose again.")
+
     elif choice1 == "RIGHT":
         print("You fell into a hole. Game Over.")
         exit()
     else:
         print("You've input a wrong answer, please choose again.")
 
-choice2 = ""
-
-while choice2 not in ("SWIM", "WAIT"):
-    choice2 = str.upper(input("Swim or Wait? "))
-    if choice2 == "WAIT":
-        print("You arrive at the island unharmed. There is a house with 3 doors.")
-    elif choice2 == "SWIM":
-        print("You get attacked by an angry trout. Game Over.")
-    else:
-        print("You've input a wrong answer, please choose again.")
-
-choice3 = ""
-
-while choice3 not in ("Red", "Blue", "Yellow"):
-    choice3 = str.upper(input("Which door? Yellow, Blue, Red? "))
-    if choice3 == "YELLOW":
-        print("You Win! You found the treasure")
-    elif choice3 == "BLUE":
-        print("Eaten by bests. Game Over!")
-    elif choice3 == "RED":
-        print("It's a room full of fire. Game Over.")
-    else:
-        print("You've input a wrong answer, please choose again.")
-
 # Notes to self
-# Refactoring needs to be made. Nested if else is the more cleaner way.
+# Refactor the breaks
+# Addition of counters - possible if too many mistakes, make game over
+# Refactor exit in future
